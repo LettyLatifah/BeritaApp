@@ -58,6 +58,16 @@
             android:paddingRight="25dp" />
     </GridLayout>
 
+    <TextView
+        android:id="@+id/SportCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Sports News"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
