@@ -1,13 +1,13 @@
-package com.example.beritaapp;
+package com.example.berita_app;
 
-class Sport {
+class News {
 
     private String title;
     private String info;
     private final int imageResource;
 
 
-    Sport(String title, String info, int imageResource) {
+    News(String title, String info, int imageResource) {
         this.title = title;
         this.info = info;
         this.imageResource= imageResource;

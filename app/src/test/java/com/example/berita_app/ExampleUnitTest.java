@@ -1,4 +1,4 @@
-package com.example.beritaapp;
+package com.example.berita_app;
 
 import org.junit.Test;
 

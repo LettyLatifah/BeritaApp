@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".DetailActivity">
 
 
-        <ImageView
-            android:id="@+id/sportsImageDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true" />
-
         <TextView
             android:id="@+id/titleDetail"
             style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textStyle="bold"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
             android:padding="16dp"
-            android:layout_alignBottom="@id/sportsImageDetail"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            android:text="@string/title_placeholder" />
+            android:text="@string/title_placeholder"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/newsImageDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleDetail"
+            android:padding="16dp"
+            app:riv_corner_radius="10dip"/>
 
         <TextView
             android:id="@+id/newsTitleDetail"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sportsImageDetail"
-            android:textColor="?android:textColorSecondary"
+            android:layout_below="@id/newsImageDetail"
             android:padding="16dp"
-            android:text="@string/news_placeholder" />
+            android:text="@string/news_placeholder"
+            android:textColor="?android:textColorSecondary" />
 
         <TextView
             android:id="@+id/subTitleDetail"
@@ -43,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/newsTitleDetail"
             android:padding="16dp"
-            android:text="@string/sports_info_placeholder" />
+            android:text="@string/news_info_placeholder" />
 
 
     </RelativeLayout>

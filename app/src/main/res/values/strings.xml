@@ -3,47 +3,51 @@
 
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
-    <string name="sports_info_placeholder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="news_info_placeholder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="hot_news">Hot News</string>
+    <string name="news_zone">News Zone</string>
+    <string name="time_ago">1 jam yang lalu</string>
+    <string name="source">Ana - CNN Indonesia</string>
 
-    <string-array name="sports_titles">
-        <item>Baseball Lorem Ipsum is simply dummy text of the printing.</item>
-        <item>Badminton Lorem Ipsum is simply dummy text of the printing.</item>
-        <item>Basketball Lorem Ipsum is simply dummy text of the printing.</item>
-        <item>Bowling Lorem Ipsum is simply dummy text of the printing.</item>
-        <item>Cycling Lorem Ipsum is simply dummy text of the printing</item>
-        <item>Golf</item>
-        <item>Running</item>
-        <item>Soccer</item>
-        <item>Swimming</item>
-        <item>Table Tennis</item>
-        <item>Tennis</item>
+    <string-array name="news_titles">
+        <item>Jokowi: Papua Barat Berpotensi Jadi Produsen Utama Komoditas Pertanian</item>
+        <item>Pesan Anies ke Atlet DKI Jakarta di PON Papua: Harus Jadi Teladan!</item>
+        <item>Pilot Pesawat Pribadi yang Hantam Gedung Kantor Dilaporkan Orang Terkaya di Rumania</item>
+        <item>Putra Shah Rukh Khan Diamankan Polisi Diduga Pesta Narkoba</item>
+        <item>Merapi Dua Kali Luncurkan Lava Hingga 1.000 Meter Pagi Ini </item>
+        <item>Pemilu Jepang Digelar 31 Oktober, Fumio Kishida Disetujui Jadi PM Baru</item>
+        <item>Seorang Pria Tewas Setelah Menyelamatkan Kakaknya yang Terjebak di Sumur</item>
+        <item>Resep Kerang Kupas Pedas Mercon ala Warung Kaki Lima</item>
+        <item>Ekstrak Kayu Manis Berpotensi Jadi Sumber Antioksidan untuk Kulit</item>
+        <item>Monitor Gaming LG UltraGear GP850 Masuk Indonesia, Harganya?</item>
+        <item>Prospek Kerja Lulusan Sastra Inggris dan Pilihan Kampusnya</item>
     </string-array>
 
-    <string-array name="sports_info">
-        <item>Here is some Tennis news!</item>
-        <item>Here is some Badminton news!</item>
-        <item>Here is some Basketball news!</item>
-        <item>Here is some Bowling news!</item>
-        <item>Here is some Cycling news!</item>
-        <item>Here is some Golf news!</item>
-        <item>Here is some Running news!</item>
-        <item>Here is some Soccer news!</item>
-        <item>Here is some Swimming news!</item>
-        <item>Here is some Table Tennis news!</item>
-        <item>Here is some Tennis news!</item>
+    <string-array name="news_info">
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
     </string-array>
 
-    <array name="sports_images">
-        <item>@drawable/img_baseball</item>
-        <item>@drawable/img_badminton</item>
-        <item>@drawable/img_basketball</item>
-        <item>@drawable/img_bowling</item>
-        <item>@drawable/img_cycling</item>
-        <item>@drawable/img_golf</item>
-        <item>@drawable/img_running</item>
-        <item>@drawable/img_soccer</item>
-        <item>@drawable/img_swimming</item>
-        <item>@drawable/img_tabletennis</item>
-        <item>@drawable/img_tennis</item>
+    <array name="news_images">
+        <item>@drawable/img_komoditas</item>
+        <item>@drawable/img_anies</item>
+        <item>@drawable/img_kebakaran</item>
+        <item>@drawable/img_shah</item>
+        <item>@drawable/img_merapi</item>
+        <item>@drawable/img_pemilu</item>
+        <item>@drawable/img_sumur</item>
+        <item>@drawable/img_pedas</item>
+        <item>@drawable/img_cengkeh</item>
+        <item>@drawable/img_monitor</item>
+        <item>@drawable/img_sastra</item>
     </array>
 </resources>

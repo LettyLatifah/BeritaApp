@@ -1,4 +1,4 @@
-package com.example.beritaapp;
+package com.example.berita_app;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -15,11 +15,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        TextView sportsTitle = findViewById(R.id.titleDetail);
-        ImageView sportsImage = findViewById(R.id.sportsImageDetail);
+        TextView newsTitle = findViewById(R.id.titleDetail);
+        ImageView newsImage = findViewById(R.id.newsImageDetail);
 
-        sportsTitle.setText(getIntent().getStringExtra("title"));
+        newsTitle.setText(getIntent().getStringExtra("title"));
         Glide.with(this).load(getIntent().getIntExtra("image_resource",0))
-                .into(sportsImage);
+                .into(newsImage);
     }
 }

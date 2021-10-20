@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.beritaapp;
+package com.example.berita_app;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,13 +31,13 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 
-class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
+class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>  {
 
-    private ArrayList<Sport> mSportsData;
+    private ArrayList<News> mSportsData;
     private Context mContext;
 
 
-    SportsAdapter(Context context, ArrayList<Sport> sportsData) {
+    NewsAdapter(Context context, ArrayList<News> sportsData) {
         this.mSportsData = sportsData;
         this.mContext = context;
     }
@@ -50,9 +50,9 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Sport currentSport = mSportsData.get(position);
+        News currentNews = mSportsData.get(position);
 
-        holder.bindTo(currentSport);
+        holder.bindTo(currentNews);
     }
 
     @Override
@@ -75,19 +75,19 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             itemView.setOnClickListener(this);
         }
 
-        void bindTo(Sport currentSport){
-            mTitleText.setText(currentSport.getTitle());
-            mInfoText.setText(currentSport.getInfo());
-            Glide.with(mContext).load(currentSport.getImageResource()).into(mSportsImage);
+        void bindTo(News currentNews){
+            mTitleText.setText(currentNews.getTitle());
+            mInfoText.setText(currentNews.getInfo());
+            Glide.with(mContext).load(currentNews.getImageResource()).into(mSportsImage);
         }
 
         @Override
         public void onClick(View view) {
-            Sport currentSport = mSportsData.get(getAdapterPosition());
+            News currentNews = mSportsData.get(getAdapterPosition());
             Intent detailIntent = new Intent(mContext, DetailActivity.class);
-            detailIntent.putExtra("title", currentSport.getTitle());
+            detailIntent.putExtra("title", currentNews.getTitle());
             detailIntent.putExtra("image_resource",
-                    currentSport.getImageResource());
+                    currentNews.getImageResource());
             mContext.startActivity(detailIntent);
         }
     }
