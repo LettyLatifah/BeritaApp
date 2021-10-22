@@ -2,60 +2,82 @@ package com.example.berita_app;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.berita_app.R;
+import com.example.berita_app.API.APIClient;
+import com.example.berita_app.API.APIInterface;
+import com.example.berita_app.models.Article;
+import com.example.berita_app.models.News;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private ArrayList<News> mNewsData;
-    private NewsAdapter mAdapter;
+    public static final String API_KEY = "762ca07378aa4145b832435604b871cc";
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private List<Article> articles = new ArrayList<>();
+    private Adapter adapter;
+    private String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.main_recyclerView);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setNestedScrollingEnabled(false);
 
-        mNewsData = new ArrayList<>();
-        mAdapter = new NewsAdapter(this, mNewsData);
-        mRecyclerView.setAdapter(mAdapter);
-
-        initializeData();
+        loadJson();
     }
 
-    private void initializeData() {
-        String[] newsList = getResources()
-                .getStringArray(R.array.news_titles);
-        String[] newsInfo = getResources()
-                .getStringArray(R.array.news_info);
+    public void loadJson(){
+        APIInterface apiInterface = APIClient.getApiClient().create(APIInterface.class);
 
-        TypedArray NewsImageResources =
-                getResources().obtainTypedArray(R.array.news_images);
+        String country = Utils.getCountry();
+        Call<News> call;
+        call = apiInterface.getNews(country, API_KEY);
 
-        mNewsData.clear();
+        call.enqueue(new Callback<News>() {
+            @Override
+            public void onResponse(Call<News> call, Response<News> response){
+                if (response.isSuccessful() && response.body().getArticle() != null) {
 
-        for(int i=0;i<newsList.length;i++){
-            mNewsData.add(new News(newsList[i],newsInfo[i],
-                    NewsImageResources.getResourceId(i,0)));
-        }
+                    if (!articles.isEmpty()) {
+                        articles.clear();
+                    }
 
-        NewsImageResources.recycle();
+                    articles = response.body().getArticle();
+                    adapter = new Adapter(articles, MainActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(MainActivity.this, "No Result", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        mAdapter.notifyDataSetChanged();
+            @Override
+            public void onFailure(Call<News> call, Throwable t){
+
+            }
+
+        });
+
     }
 
-    public void resetSports(View view) {
-        initializeData();
-    }
 }
