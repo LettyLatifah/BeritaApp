@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BeritaApp</string>
+    <string name="app_name">News Zone</string>
 
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
@@ -9,45 +9,5 @@
     <string name="time_ago">1 jam yang lalu</string>
     <string name="source">Ana - CNN Indonesia</string>
 
-    <string-array name="news_titles">
-        <item>Jokowi: Papua Barat Berpotensi Jadi Produsen Utama Komoditas Pertanian</item>
-        <item>Pesan Anies ke Atlet DKI Jakarta di PON Papua: Harus Jadi Teladan!</item>
-        <item>Pilot Pesawat Pribadi yang Hantam Gedung Kantor Dilaporkan Orang Terkaya di Rumania</item>
-        <item>Putra Shah Rukh Khan Diamankan Polisi Diduga Pesta Narkoba</item>
-        <item>Merapi Dua Kali Luncurkan Lava Hingga 1.000 Meter Pagi Ini </item>
-        <item>Pemilu Jepang Digelar 31 Oktober, Fumio Kishida Disetujui Jadi PM Baru</item>
-        <item>Seorang Pria Tewas Setelah Menyelamatkan Kakaknya yang Terjebak di Sumur</item>
-        <item>Resep Kerang Kupas Pedas Mercon ala Warung Kaki Lima</item>
-        <item>Ekstrak Kayu Manis Berpotensi Jadi Sumber Antioksidan untuk Kulit</item>
-        <item>Monitor Gaming LG UltraGear GP850 Masuk Indonesia, Harganya?</item>
-        <item>Prospek Kerja Lulusan Sastra Inggris dan Pilihan Kampusnya</item>
-    </string-array>
 
-    <string-array name="news_info">
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-        <item>Jakarta, Indonesia</item>
-    </string-array>
-
-    <array name="news_images">
-        <item>@drawable/img_komoditas</item>
-        <item>@drawable/img_anies</item>
-        <item>@drawable/img_kebakaran</item>
-        <item>@drawable/img_shah</item>
-        <item>@drawable/img_merapi</item>
-        <item>@drawable/img_pemilu</item>
-        <item>@drawable/img_sumur</item>
-        <item>@drawable/img_pedas</item>
-        <item>@drawable/img_cengkeh</item>
-        <item>@drawable/img_monitor</item>
-        <item>@drawable/img_sastra</item>
-    </array>
 </resources>
