@@ -1,6 +1,7 @@
 package com.example.berita_app;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityOptionsCompat;
@@ -27,6 +28,7 @@ import com.example.berita_app.API.APIClient;
 import com.example.berita_app.API.APIInterface;
 import com.example.berita_app.models.Article;
 import com.example.berita_app.models.News;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_category:
+                        startActivity(new Intent(getApplicationContext(),Category.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_home:
+                        return true;
+                    case R.id.nav_about:
+                        startActivity(new Intent(getApplicationContext(),About.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+
+                return false;
+            }
+        });
 
         recyclerView = findViewById(R.id.main_recyclerView);
         layoutManager = new LinearLayoutManager(MainActivity.this);
