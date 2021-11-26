@@ -1,4 +1,4 @@
-package com.example.berita_app;
+package com.example.berita_app.Activity;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -20,6 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.berita_app.API.APIClient;
 import com.example.berita_app.API.APIInterfaceCategory;
+import com.example.berita_app.About;
+import com.example.berita_app.Adapter;
+import com.example.berita_app.Category;
+import com.example.berita_app.DetailActivity;
+import com.example.berita_app.MainActivity;
+import com.example.berita_app.R;
+import com.example.berita_app.Utils;
 import com.example.berita_app.models.Article;
 import com.example.berita_app.models.News;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,13 +63,13 @@ public class TechnologyActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()){
                         case R.id.nav_category:
-                            startActivity(new Intent(getApplicationContext(),Category.class));
+                            startActivity(new Intent(getApplicationContext(), Category.class));
                             overridePendingTransition(0,0);
                             return true;
                         case R.id.nav_home:
                             return true;
                         case R.id.nav_about:
-                            startActivity(new Intent(getApplicationContext(),About.class));
+                            startActivity(new Intent(getApplicationContext(), About.class));
                             overridePendingTransition(0,0);
                             return true;
                     }
@@ -72,7 +79,7 @@ public class TechnologyActivity extends AppCompatActivity {
             });
 
             recyclerView = findViewById(R.id.main_recyclerView);
-            layoutManager = new LinearLayoutManager(com.example.berita_app.TechnologyActivity.this);
+            layoutManager = new LinearLayoutManager(TechnologyActivity.this);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setNestedScrollingEnabled(false);
@@ -105,14 +112,14 @@ public class TechnologyActivity extends AppCompatActivity {
                         }
 
                         articles = response.body().getArticle();
-                        adapter = new Adapter(articles, com.example.berita_app.TechnologyActivity.this);
+                        adapter = new Adapter(articles, TechnologyActivity.this);
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
 
                         initListener();
 
                     }else{
-                        Toast.makeText(com.example.berita_app.TechnologyActivity.this, "No Result", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TechnologyActivity.this, "No Result", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -132,7 +139,7 @@ public class TechnologyActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(View view, int position) {
                     ImageView imageView = view.findViewById(R.id.img);
-                    Intent intent = new Intent(com.example.berita_app.TechnologyActivity.this, DetailActivity.class);
+                    Intent intent = new Intent(TechnologyActivity.this, DetailActivity.class);
 
                     Article article = articles.get(position);
                     intent.putExtra("url", article.getUrl());

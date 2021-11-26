@@ -9,6 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 
+import com.example.berita_app.Activity.BusinessActivity;
+import com.example.berita_app.Activity.EntertainmentActivity;
+import com.example.berita_app.Activity.HeadLineActivity;
+import com.example.berita_app.Activity.HealthActivity;
+import com.example.berita_app.Activity.SportsActivity;
+import com.example.berita_app.Activity.TechnologyActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 

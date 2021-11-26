@@ -1,4 +1,4 @@
-package com.example.berita_app;
+package com.example.berita_app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

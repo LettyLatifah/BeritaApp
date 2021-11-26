@@ -36,26 +36,23 @@
             android:theme="@style/Theme.BeritaApp.NoActionBar" />
 
         <activity
-            android:name=".EntertainmentActivity"
+            android:name=".Activity.EntertainmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HealthActivity"
+            android:name=".Activity.HealthActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BusinessActivity"
+            android:name=".Activity.BusinessActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TechnologyActivity"
+            android:name=".Activity.TechnologyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HeadLineActivity"
+            android:name=".Activity.HeadLineActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SportsNewsActivity"
+            android:name=".Activity.SportsActivity"
             android:screenOrientation="portrait" />
-<!--        <activity-->
-<!--            android:name=".activities.OpenNewsActivity"-->
-<!--            android:screenOrientation="portrait" />-->
     </application>
 
 </manifest>

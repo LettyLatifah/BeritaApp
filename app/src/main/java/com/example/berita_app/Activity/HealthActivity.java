@@ -1,6 +1,5 @@
-package com.example.berita_app;
+package com.example.berita_app.Activity;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -20,8 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.berita_app.API.APIClient;
-import com.example.berita_app.API.APIInterface;
 import com.example.berita_app.API.APIInterfaceCategory;
+import com.example.berita_app.About;
+import com.example.berita_app.Adapter;
+import com.example.berita_app.Category;
+import com.example.berita_app.DetailActivity;
+import com.example.berita_app.MainActivity;
+import com.example.berita_app.R;
+import com.example.berita_app.Utils;
 import com.example.berita_app.models.Article;
 import com.example.berita_app.models.News;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -57,13 +62,13 @@ public class HealthActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_category:
-                        startActivity(new Intent(getApplicationContext(),Category.class));
+                        startActivity(new Intent(getApplicationContext(), Category.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_about:
-                        startActivity(new Intent(getApplicationContext(),About.class));
+                        startActivity(new Intent(getApplicationContext(), About.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
