@@ -188,3 +188,5 @@ public class HealthActivity extends AppCompatActivity {
         return true;
     }
 }
+
+// Rachmi's Commit : HealthActivity
