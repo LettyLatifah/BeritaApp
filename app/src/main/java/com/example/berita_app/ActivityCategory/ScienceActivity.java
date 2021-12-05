@@ -189,3 +189,4 @@ public class ScienceActivity extends AppCompatActivity {
     }
 }
 
+// Rachmi's Commit : ScienceActivity
