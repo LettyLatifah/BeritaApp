@@ -188,3 +188,5 @@ public class BusinessActivity extends AppCompatActivity {
         return true;
     }
 }
+
+// Rachmi's Commit : Business Activity
