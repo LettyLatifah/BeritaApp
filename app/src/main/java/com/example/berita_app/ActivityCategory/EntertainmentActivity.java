@@ -188,3 +188,5 @@ public class EntertainmentActivity extends AppCompatActivity {
         return true;
     }
 }
+
+// Rachmi's Commit : EntertainmentActivity
