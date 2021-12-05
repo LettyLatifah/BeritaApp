@@ -40,153 +40,153 @@ import retrofit2.Response;
 
 public class TechnologyActivity extends AppCompatActivity {
 
-        public static final String country_id = "id";
-        public static final String language_id = "id";
-        public static final String category = "technology";
-        public static final String API_KEY = "762ca07378aa4145b832435604b871cc";
+    public static final String country_id = "id";
+    public static final String language_id = "id";
+    public static final String category = "technology";
+    public static final String API_KEY = "762ca07378aa4145b832435604b871cc";
 
-        private RecyclerView recyclerView;
-        private RecyclerView.LayoutManager layoutManager;
-        private List<Article> articles = new ArrayList<>();
-        private Adapter adapter;
-        private String TAG = MainActivity.class.getSimpleName();
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private List<Article> articles = new ArrayList<>();
+    private Adapter adapter;
+    private String TAG = MainActivity.class.getSimpleName();
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-            bottomNavigationView.setSelectedItemId(R.id.nav_home);
-            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.nav_category:
-                            startActivity(new Intent(getApplicationContext(), Category.class));
-                            overridePendingTransition(0,0);
-                            return true;
-                        case R.id.nav_home:
-                            return true;
-                        case R.id.nav_about:
-                            startActivity(new Intent(getApplicationContext(), About.class));
-                            overridePendingTransition(0,0);
-                            return true;
-                    }
-
-                    return false;
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_category:
+                        startActivity(new Intent(getApplicationContext(), Category.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_home:
+                        return true;
+                    case R.id.nav_about:
+                        startActivity(new Intent(getApplicationContext(), About.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
-            });
 
-            recyclerView = findViewById(R.id.main_recyclerView);
-            layoutManager = new LinearLayoutManager(TechnologyActivity.this);
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setNestedScrollingEnabled(false);
+                return false;
+            }
+        });
 
-            loadJson("");
-        }
+        recyclerView = findViewById(R.id.main_recyclerView);
+        layoutManager = new LinearLayoutManager(TechnologyActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setNestedScrollingEnabled(false);
 
-        public void loadJson(final String keyword){
-            APIInterfaceCategory apiInterface = APIClient.getApiClient().create(APIInterfaceCategory.class);
+        loadJson("");
+    }
+
+    public void loadJson(final String keyword){
+        APIInterfaceCategory apiInterface = APIClient.getApiClient().create(APIInterfaceCategory.class);
 
 //        String country = Utils.getCountry();
-            String language = Utils.getLanguage();
+        String language = Utils.getLanguage();
 
-            Call<News> call;
-            if(keyword.length()>0){
-                call = apiInterface.getNewsSearch(keyword, language_id, "publishedAt",API_KEY);
-            } else {
-                call = apiInterface.getNews(country_id, API_KEY, category);
+        Call<News> call;
+        if(keyword.length()>0){
+            call = apiInterface.getNewsSearch(keyword, language_id, "publishedAt",API_KEY);
+        } else {
+            call = apiInterface.getNews(country_id, API_KEY, category);
+        }
+
+
+
+        call.enqueue(new Callback<News>() {
+            @Override
+            public void onResponse(Call<News> call, Response<News> response){
+                if (response.isSuccessful() && response.body().getArticle() != null) {
+
+                    if (!articles.isEmpty()) {
+                        articles.clear();
+                    }
+
+                    articles = response.body().getArticle();
+                    adapter = new Adapter(articles, TechnologyActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                    initListener();
+
+                }else{
+                    Toast.makeText(TechnologyActivity.this, "No Result", Toast.LENGTH_SHORT).show();
+                }
             }
 
+            @Override
+            public void onFailure(Call<News> call, Throwable t){
 
+            }
 
-            call.enqueue(new Callback<News>() {
-                @Override
-                public void onResponse(Call<News> call, Response<News> response){
-                    if (response.isSuccessful() && response.body().getArticle() != null) {
+        });
 
-                        if (!articles.isEmpty()) {
-                            articles.clear();
-                        }
-
-                        articles = response.body().getArticle();
-                        adapter = new Adapter(articles, TechnologyActivity.this);
-                        recyclerView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-
-                        initListener();
-
-                    }else{
-                        Toast.makeText(TechnologyActivity.this, "No Result", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<News> call, Throwable t){
-
-                }
-
-            });
-
-        }
-
-
-        private void initListener(){
-
-            adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    ImageView imageView = view.findViewById(R.id.img);
-                    Intent intent = new Intent(TechnologyActivity.this, DetailActivity.class);
-
-                    Article article = articles.get(position);
-                    intent.putExtra("url", article.getUrl());
-                    intent.putExtra("title", article.getTitle());
-                    intent.putExtra("img",  article.getUrlToImage());
-                    intent.putExtra("date",  article.getPublishedAt());
-                    intent.putExtra("source",  article.getSource().getName());
-                    intent.putExtra("author",  article.getAuthor());
-
-                    startActivity(intent);
-
-
-                }
-            });
-
-        }
-
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_main, menu);
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-            MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setQueryHint("Mencari Berita Terbaru....");
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    if (query.length() > 2){
-                        loadJson(query);
-                    }
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    loadJson(newText);
-                    return false;
-                }
-            });
-            searchMenuItem.getIcon().setVisible(false, false);
-
-            return true;
-        }
     }
+
+
+    private void initListener(){
+
+        adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ImageView imageView = view.findViewById(R.id.img);
+                Intent intent = new Intent(TechnologyActivity.this, DetailActivity.class);
+
+                Article article = articles.get(position);
+                intent.putExtra("url", article.getUrl());
+                intent.putExtra("title", article.getTitle());
+                intent.putExtra("img",  article.getUrlToImage());
+                intent.putExtra("date",  article.getPublishedAt());
+                intent.putExtra("source",  article.getSource().getName());
+                intent.putExtra("author",  article.getAuthor());
+
+                startActivity(intent);
+
+
+            }
+        });
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setQueryHint("Mencari Berita Terbaru....");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.length() > 2){
+                    loadJson(query);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                loadJson(newText);
+                return false;
+            }
+        });
+        searchMenuItem.getIcon().setVisible(false, false);
+
+        return true;
+    }
+}
 
