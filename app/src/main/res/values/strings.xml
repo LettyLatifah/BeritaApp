@@ -11,6 +11,12 @@
     <string name="NZ_desc">News Zone adalah aplikasi portal berita yang menyediakan berbagai berita yang sedang hangat. Dengan berbagai macam kategori yaitu Sains, Kesehatan, Olahraga,Teknologi, Hiburan dan Bisnis.</string>
     <string name="search">Search</string>
     <string name="action_notification">Notification</string>
+    <string name="alarm_off">Alarm off</string>
+    <string name="alarm_on">Alarm on</string>
+    <string name="notification_title">News Alert</string>
+    <string name="notification_text">You should read hot news now!</string>
+    <string name="alarm_on_toast">Alarm On!</string>
+    <string name="alarm_off_toast">Alarm Off!</string>
 
 
 </resources>
