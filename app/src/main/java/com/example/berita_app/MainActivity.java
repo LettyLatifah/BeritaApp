@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Database;
+import androidx.room.Room;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.SearchManager;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.berita_app.API.APIClient;
 import com.example.berita_app.API.APIInterface;
+import com.example.berita_app.Favorite.FavoriteDatabase;
 import com.example.berita_app.models.Article;
 import com.example.berita_app.models.News;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,11 +51,15 @@ public class MainActivity extends AppCompatActivity {
     private List<Article> articles = new ArrayList<>();
     private Adapter adapter;
     private String TAG = MainActivity.class.getSimpleName();
+    public static FavoriteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        database = Room.databaseBuilder(getApplicationContext(),
+                FavoriteDatabase.class, "favoritedb").allowMainThreadQueries().build();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
@@ -66,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_home:
                         return true;
+
+                    case R.id.nav_favorite:
+                        startActivity(new Intent(getApplicationContext(),FavoriteActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
                     case R.id.nav_about:
                         startActivity(new Intent(getApplicationContext(),About.class));
                         overridePendingTransition(0,0);

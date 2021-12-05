@@ -30,6 +30,12 @@ public class About extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
+
+                    case R.id.nav_favorite:
+                        startActivity(new Intent(getApplicationContext(),FavoriteActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
                     case R.id.nav_about:
                         return true;
                 }

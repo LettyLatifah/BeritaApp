@@ -41,6 +41,12 @@ public class Category extends AppCompatActivity implements View.OnClickListener 
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
+
+                    case R.id.nav_favorite:
+                        startActivity(new Intent(getApplicationContext(),FavoriteActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
                     case R.id.nav_about:
                         startActivity(new Intent(getApplicationContext(),About.class));
                         overridePendingTransition(0,0);

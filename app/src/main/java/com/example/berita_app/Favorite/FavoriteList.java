@@ -1,57 +1,43 @@
-package com.example.berita_app.models;
+package com.example.berita_app.Favorite;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class Article {
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    @SerializedName("id")
-    @Expose
-    private int id;
+import com.example.berita_app.models.Source;
 
-    @SerializedName("source")
-    @Expose
-    private Source source;
 
-    @SerializedName("author")
-    @Expose
+import java.io.Serializable;
+
+@Entity(tableName = "favorite_table")
+public class FavoriteList implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
+    @ColumnInfo(name="author")
     private String author;
 
-    @SerializedName("title")
-    @Expose
+    @ColumnInfo(name="title")
     private String title;
 
-    @SerializedName("description")
-    @Expose
+    @ColumnInfo(name="description")
     private String description;
 
-    @SerializedName("url")
-    @Expose
+    @ColumnInfo(name="url")
     private String url;
 
-    @SerializedName("urlToImage")
-    @Expose
+    @ColumnInfo(name="urlToImage")
     private String urlToImage;
 
-    @SerializedName("publishedAt")
-    @Expose
+    @ColumnInfo(name="publishedAt")
     private String publishedAt;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(String author) {
-        this.id = id;
-    }
+    public int getId() { return id; }
 
-    public Source getSource() {
-        return source;
-    }
-
-    public void setSource(Source source) {
-        this.source = source;
-    }
+    public void setId(int id) {this.id = id; }
 
     public String getAuthor() {
         return author;

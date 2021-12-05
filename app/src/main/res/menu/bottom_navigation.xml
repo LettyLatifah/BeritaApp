@@ -12,6 +12,12 @@
         android:title="Category" />
 
     <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_fav"
+        android:title="Favorite" />
+
+
+    <item
         android:id="@+id/nav_about"
         android:icon="@drawable/ic_about"
         android:title="About" />

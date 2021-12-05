@@ -1,4 +1,4 @@
-package com.example.berita_app;
+package com.example.berita_app.Favorite;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -22,41 +22,39 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.berita_app.Favorite.FavoriteDatabase;
-import com.example.berita_app.Favorite.FavoriteList;
+import com.example.berita_app.Adapter;
+import com.example.berita_app.R;
+import com.example.berita_app.Utils;
 import com.example.berita_app.models.Article;
-import com.example.berita_app.models.Source;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter <FavoriteAdapter.MyViewHolder> {
 
-    private List<Article> articles;
     private Context context;
-    private OnItemClickListener onItemClickListener;
+    private List<FavoriteList> favoriteList;
     private FavoriteDatabase database;
-    private int title;
+    private Adapter.OnItemClickListener onItemClickListener;
 
 
-    public Adapter(List<Article> articles, Context context) {
-        this.articles = articles;
+    public FavoriteAdapter(List<FavoriteList> favoriteList, Context context) {
+        this.favoriteList = favoriteList;
         this.context = context;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_favorite, parent, false);
 
-        return new MyViewHolder(view, onItemClickListener);
+        return new FavoriteAdapter.MyViewHolder(view, onItemClickListener);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holders, int position) {
         final MyViewHolder holder = holders;
-        Article model = articles.get(position);
-        FavoriteList favoriteList = new FavoriteList();
-
+        final FavoriteList fl = favoriteList.get(position);
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(Utils.getRandomDrawbleColor());
         requestOptions.error(Utils.getRandomDrawbleColor());
@@ -64,7 +62,7 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
         requestOptions.centerCrop();
 
         Glide.with(context)
-                .load(model.getUrlToImage())
+                .load(fl.getUrlToImage())
                 .apply(requestOptions)
                 .listener(new RequestListener<Drawable>() {
                     @Override
@@ -82,62 +80,23 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.imageview);
 
-        holder.title.setText(model.getTitle());
-        holder.desc.setText(model.getDescription());
-        holder.source.setText(model.getSource().getName());
-        holder.time.setText(" \u2022 " + Utils.DateToTimeFormat(model.getPublishedAt()));
-        holder.publishedAt.setText(Utils.DateFormat(model.getPublishedAt()));
-        holder.author.setText(model.getAuthor());
+        holder.title.setText(fl.getTitle());
+        holder.desc.setText(fl.getDescription());
+//        holder.source.setText(fl.getSource().getName());
+        holder.time.setText(" \u2022 " + Utils.DateToTimeFormat(fl.getPublishedAt()));
+        holder.publishedAt.setText(Utils.DateFormat(fl.getPublishedAt()));
+        holder.author.setText(fl.getAuthor());
 
 
-        
-        database = Room.databaseBuilder(context, FavoriteDatabase.class, "Favoritedb").build();
-        if(MainActivity.database.favoriteDao().isFavorite(model.getId()) == 1){
-            holder.fav_btn.setImageResource(R.drawable.ic_fav);
-        }else {
-            holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
-            holder.fav_btn.setOnClickListener(new View.OnClickListener(){
 
-                @Override
-                public void onClick(View view) {
-
-                    int id = model.getId();
-                    String author = model.getAuthor();
-                    String title = model.getTitle();
-                    String description = model.getDescription();
-                    String url = model.getUrl();
-                    String urlToImage = model.getUrlToImage();
-                    String publishedAt = model.getPublishedAt();
-
-                    favoriteList.setId(id);
-                    favoriteList.setAuthor(author);
-                    favoriteList.setDescription(description);
-                    favoriteList.setUrl(url);
-                    favoriteList.setTitle(title);
-                    favoriteList.setUrlToImage(urlToImage);
-                    favoriteList.setPublishedAt(publishedAt);
-
-                    if (MainActivity.database.favoriteDao().isFavorite(id)!=1){
-                        holder.fav_btn.setImageResource((R.drawable.ic_fav));
-                        MainActivity.database.favoriteDao().addData(favoriteList);
-                    }else {
-                        holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
-                        MainActivity.database.favoriteDao().delete(favoriteList);
-                    }
-
-                }
-            });
-        }
-        }
-
-
+    }
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        return favoriteList.size();
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(Adapter.OnItemClickListener onItemClickListener){
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -147,12 +106,11 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-
         TextView title, desc, author, publishedAt, source, time;
-        ImageView imageview,  fav_btn;
+        ImageView imageview;
         ProgressBar progressBar;
-        OnItemClickListener onItemClickListener;
-        public MyViewHolder(View itemView, OnItemClickListener onItemClickListener) {
+        Adapter.OnItemClickListener onItemClickListener;
+        public MyViewHolder(View itemView, Adapter.OnItemClickListener onItemClickListener) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
@@ -163,7 +121,6 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
             time = itemView.findViewById(R.id.time);
             progressBar = itemView.findViewById(R.id.progress_bar);
             imageview = itemView.findViewById(R.id.newsImage);
-            fav_btn = itemView.findViewById(R.id.fav_btn);
 
             this.onItemClickListener = onItemClickListener;
         }
