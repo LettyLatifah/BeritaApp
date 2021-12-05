@@ -1,4 +1,4 @@
-package com.example.berita_app.Activity;
+package com.example.berita_app.ActivityCategory;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -38,10 +38,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SportsActivity extends AppCompatActivity {
+public class HealthActivity extends AppCompatActivity {
     public static final String country_id = "id";
     public static final String language_id = "id";
-    public static final String category = "sports";
+    public static final String category = "health";
     public static final String API_KEY = "762ca07378aa4145b832435604b871cc";
 
     private RecyclerView recyclerView;
@@ -78,7 +78,7 @@ public class SportsActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.main_recyclerView);
-        layoutManager = new LinearLayoutManager(SportsActivity.this);
+        layoutManager = new LinearLayoutManager(HealthActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
@@ -111,14 +111,14 @@ public class SportsActivity extends AppCompatActivity {
                     }
 
                     articles = response.body().getArticle();
-                    adapter = new Adapter(articles, SportsActivity.this);
+                    adapter = new Adapter(articles, HealthActivity.this);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
                     initListener();
 
                 }else{
-                    Toast.makeText(SportsActivity.this, "No Result", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HealthActivity.this, "No Result", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -138,7 +138,7 @@ public class SportsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 ImageView imageView = view.findViewById(R.id.img);
-                Intent intent = new Intent(SportsActivity.this, DetailActivity.class);
+                Intent intent = new Intent(HealthActivity.this, DetailActivity.class);
 
                 Article article = articles.get(position);
                 intent.putExtra("url", article.getUrl());

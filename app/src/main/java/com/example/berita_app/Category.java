@@ -3,18 +3,19 @@ package com.example.berita_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 
-import com.example.berita_app.Activity.BusinessActivity;
-import com.example.berita_app.Activity.EntertainmentActivity;
-import com.example.berita_app.Activity.HeadLineActivity;
-import com.example.berita_app.Activity.HealthActivity;
-import com.example.berita_app.Activity.SportsActivity;
-import com.example.berita_app.Activity.TechnologyActivity;
+import com.example.berita_app.ActivityCategory.BusinessActivity;
+import com.example.berita_app.ActivityCategory.EntertainmentActivity;
+import com.example.berita_app.ActivityCategory.HealthActivity;
+import com.example.berita_app.ActivityCategory.ScienceActivity;
+import com.example.berita_app.ActivityCategory.SportsActivity;
+import com.example.berita_app.ActivityCategory.TechnologyActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
@@ -71,7 +72,7 @@ public class Category extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.cardHeadLine) {
-            Intent intent = new Intent(Category.this, HeadLineActivity.class);
+            Intent intent = new Intent(Category.this, ScienceActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.cardSports) {
             Intent intent = new Intent(Category.this, SportsActivity.class);

@@ -1,4 +1,4 @@
-package com.example.berita_app.Activity;
+package com.example.berita_app.ActivityCategory;
 
 import android.app.SearchManager;
 import android.content.Context;

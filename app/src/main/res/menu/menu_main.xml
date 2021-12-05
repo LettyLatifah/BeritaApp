@@ -8,11 +8,19 @@
     <item
         android:id="@+id/action_search"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_search"
         app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
+
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:orderInCategory="120"
+        android:title="@string/action_notification"
+        app:showAsAction="always" />
+
 <!--    <item-->
 <!--        android:id="@+id/action_settings"-->
 <!--        android:orderInCategory="100"-->

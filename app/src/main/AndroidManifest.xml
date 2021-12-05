@@ -13,6 +13,12 @@
         android:theme="@style/Theme.BeritaApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".NotificationAlarm"
+            android:exported="true" />
+        <activity
+            android:name=".FavoriteActivity"
+            android:exported="true" />
+        <activity
             android:name=".About"
             android:exported="true" />
         <activity
@@ -34,24 +40,23 @@
             android:name=".DetailActivity"
             android:exported="true"
             android:theme="@style/Theme.BeritaApp.NoActionBar" />
-
         <activity
-            android:name=".Activity.EntertainmentActivity"
+            android:name=".ActivityCategory.EntertainmentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.HealthActivity"
+            android:name=".ActivityCategory.HealthActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.BusinessActivity"
+            android:name=".ActivityCategory.BusinessActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.TechnologyActivity"
+            android:name=".ActivityCategory.TechnologyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.HeadLineActivity"
+            android:name=".ActivityCategory.ScienceActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.SportsActivity"
+            android:name=".ActivityCategory.SportsActivity"
             android:screenOrientation="portrait" />
     </application>
 

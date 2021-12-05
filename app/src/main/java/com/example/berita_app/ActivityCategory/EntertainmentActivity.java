@@ -1,4 +1,4 @@
-package com.example.berita_app.Activity;
+package com.example.berita_app.ActivityCategory;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -38,10 +38,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BusinessActivity extends AppCompatActivity {
+public class EntertainmentActivity extends AppCompatActivity {
     public static final String country_id = "id";
     public static final String language_id = "id";
-    public static final String category = "business";
+    public static final String category = "entertainment";
     public static final String API_KEY = "762ca07378aa4145b832435604b871cc";
 
     private RecyclerView recyclerView;
@@ -78,7 +78,7 @@ public class BusinessActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.main_recyclerView);
-        layoutManager = new LinearLayoutManager(BusinessActivity.this);
+        layoutManager = new LinearLayoutManager(EntertainmentActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
@@ -111,14 +111,14 @@ public class BusinessActivity extends AppCompatActivity {
                     }
 
                     articles = response.body().getArticle();
-                    adapter = new Adapter(articles, BusinessActivity.this);
+                    adapter = new Adapter(articles, EntertainmentActivity.this);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
                     initListener();
 
                 }else{
-                    Toast.makeText(BusinessActivity.this, "No Result", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EntertainmentActivity.this, "No Result", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -138,7 +138,7 @@ public class BusinessActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 ImageView imageView = view.findViewById(R.id.img);
-                Intent intent = new Intent(BusinessActivity.this, DetailActivity.class);
+                Intent intent = new Intent(EntertainmentActivity.this, DetailActivity.class);
 
                 Article article = articles.get(position);
                 intent.putExtra("url", article.getUrl());
