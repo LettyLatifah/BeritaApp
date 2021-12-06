@@ -17,6 +17,10 @@
     <string name="notification_text">You should read hot news now!</string>
     <string name="alarm_on_toast">Alarm On!</string>
     <string name="alarm_off_toast">Alarm Off!</string>
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="favorite">Favorite</string>
+    <string name="about">About</string>
 
 
 </resources>

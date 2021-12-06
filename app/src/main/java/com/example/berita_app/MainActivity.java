@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadJson(final String keyword){
         APIInterface apiInterface = APIClient.getApiClient().create(APIInterface.class);
 
-//        String country = Utils.getCountry();
+
         String language = Utils.getLanguage();
 
         Call<News> call;
