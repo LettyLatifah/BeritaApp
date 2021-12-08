@@ -56,7 +56,7 @@ public class NotificationAlarm extends AppCompatActivity {
                         String toastMessage;
                         if (isChecked) {
 
-                            long repeatInterval = 30000L;
+                            long repeatInterval = AlarmManager.INTERVAL_DAY;
 
                             long triggerTime = SystemClock.elapsedRealtime()
                                     + repeatInterval;
