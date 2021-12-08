@@ -26,9 +26,6 @@
         </receiver>
 
         <activity
-            android:name=".About"
-            android:exported="true" />
-        <activity
             android:name=".Category"
             android:exported="true" />
         <activity
