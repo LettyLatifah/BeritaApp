@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.berita_app.API.APIClient;
 import com.example.berita_app.API.APIInterfaceCategory;
+import com.example.berita_app.About;
 import com.example.berita_app.Adapter;
 import com.example.berita_app.Category;
 import com.example.berita_app.DetailActivity;
@@ -188,4 +189,3 @@ public class ScienceActivity extends AppCompatActivity {
     }
 }
 
-// Rachmi's Commit : ScienceActivity

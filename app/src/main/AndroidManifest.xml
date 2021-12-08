@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeritaApp"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".FavoriteActivity"
             android:exported="true" />
@@ -25,6 +26,9 @@
             android:exported="false">
         </receiver>
 
+        <activity
+            android:name=".About"
+            android:exported="true" />
         <activity
             android:name=".Category"
             android:exported="true" />
