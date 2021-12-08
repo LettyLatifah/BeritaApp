@@ -13,9 +13,6 @@
         android:theme="@style/Theme.BeritaApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".NotificationAlarm"
-            android:exported="true" />
-        <activity
             android:name=".FavoriteActivity"
             android:exported="true" />
         <activity
