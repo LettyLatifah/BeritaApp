@@ -15,6 +15,16 @@
         <activity
             android:name=".FavoriteActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".NotificationAlarm"
+            android:exported="true" />
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
+
         <activity
             android:name=".About"
             android:exported="true" />
@@ -56,6 +66,8 @@
         <activity
             android:name=".ActivityCategory.SportsActivity"
             android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

@@ -90,45 +90,45 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
         holder.author.setText(model.getAuthor());
 
 
-        
-        database = Room.databaseBuilder(context, FavoriteDatabase.class, "Favoritedb").build();
-        if(MainActivity.database.favoriteDao().isFavorite(model.getId()) == 1){
-            holder.fav_btn.setImageResource(R.drawable.ic_fav);
-        }else {
-            holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
-            holder.fav_btn.setOnClickListener(new View.OnClickListener(){
 
-                @Override
-                public void onClick(View view) {
-
-                    int id = model.getId();
-                    String author = model.getAuthor();
-                    String title = model.getTitle();
-                    String description = model.getDescription();
-                    String url = model.getUrl();
-                    String urlToImage = model.getUrlToImage();
-                    String publishedAt = model.getPublishedAt();
-
-                    favoriteList.setId(id);
-                    favoriteList.setAuthor(author);
-                    favoriteList.setDescription(description);
-                    favoriteList.setUrl(url);
-                    favoriteList.setTitle(title);
-                    favoriteList.setUrlToImage(urlToImage);
-                    favoriteList.setPublishedAt(publishedAt);
-
-                    if (MainActivity.database.favoriteDao().isFavorite(id)!=1){
-                        holder.fav_btn.setImageResource((R.drawable.ic_fav));
-                        MainActivity.database.favoriteDao().addData(favoriteList);
-                    }else {
-                        holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
-                        MainActivity.database.favoriteDao().delete(favoriteList);
-                    }
-
-                }
-            });
-        }
-        }
+//        database = Room.databaseBuilder(context, FavoriteDatabase.class, "Favoritedb").build();
+//        if(MainActivity.database.favoriteDao().isFavorite(model.getId()) == 1){
+//            holder.fav_btn.setImageResource(R.drawable.ic_fav);
+//        }else {
+//            holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
+//            holder.fav_btn.setOnClickListener(new View.OnClickListener(){
+//
+//                @Override
+//                public void onClick(View view) {
+//
+//                    int id = model.getId();
+//                    String author = model.getAuthor();
+//                    String title = model.getTitle();
+//                    String description = model.getDescription();
+//                    String url = model.getUrl();
+//                    String urlToImage = model.getUrlToImage();
+//                    String publishedAt = model.getPublishedAt();
+//
+//                    favoriteList.setId(id);
+//                    favoriteList.setAuthor(author);
+//                    favoriteList.setDescription(description);
+//                    favoriteList.setUrl(url);
+//                    favoriteList.setTitle(title);
+//                    favoriteList.setUrlToImage(urlToImage);
+//                    favoriteList.setPublishedAt(publishedAt);
+//
+//                    if (MainActivity.database.favoriteDao().isFavorite(id)!=1){
+//                        holder.fav_btn.setImageResource((R.drawable.ic_fav));
+//                        MainActivity.database.favoriteDao().addData(favoriteList);
+//                    }else {
+//                        holder.fav_btn.setImageResource(R.drawable.ic_fav_border);
+//                        MainActivity.database.favoriteDao().delete(favoriteList);
+//                    }
+//
+//                }
+//            });
+//        }
+    }
 
 
 

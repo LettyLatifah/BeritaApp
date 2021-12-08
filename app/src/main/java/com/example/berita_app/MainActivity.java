@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         database = Room.databaseBuilder(getApplicationContext(),
-                FavoriteDatabase.class, "favoritedb").allowMainThreadQueries().build();
+                FavoriteDatabase.class, "Favoritedb").allowMainThreadQueries().build();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);

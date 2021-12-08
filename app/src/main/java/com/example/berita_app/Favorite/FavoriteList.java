@@ -10,7 +10,7 @@ import com.example.berita_app.models.Source;
 
 import java.io.Serializable;
 
-@Entity(tableName = "favorite_table")
+@Entity(tableName = "favoritelist")
 public class FavoriteList implements Serializable {
 
     @PrimaryKey(autoGenerate = true)

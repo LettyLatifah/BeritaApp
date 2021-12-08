@@ -10,15 +10,15 @@ import java.util.List;
 @Dao
 public interface FavoriteDao {
     @Insert
-    public void addData(FavoriteList favorite_table);
+    public void addData(FavoriteList favoriteList);
 
-    @Query("select * from favorite_table")
+    @Query("select * from favoritelist")
     public List<FavoriteList> getFavoriteData();
 
-    @Query("SELECT EXISTS (SELECT 1 FROM favorite_table WHERE id=:id)")
+    @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
     public int isFavorite(int id);
 
     @Delete
-    public void delete(FavoriteList favorite_table);
+    public void delete(FavoriteList favoriteList);
 
 }

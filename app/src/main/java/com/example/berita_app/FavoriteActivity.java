@@ -25,7 +25,7 @@ public class FavoriteActivity extends AppCompatActivity {
     private Context context;
     public FavoriteAdapter favoriteAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    public static List<FavoriteList> favorite_list;
+//    public static List<FavoriteList> favorite_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +63,22 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.main_recyclerView);
+        recyclerView = findViewById(R.id.fav_recyclerView);
         layoutManager = new LinearLayoutManager(getApplicationContext());
 
-        favorite_list = database.favoriteDao().getFavoriteData();
+//        favorite_list = database.favoriteDao().getFavoriteData();
 
-        favoriteAdapter = new FavoriteAdapter(favorite_list, getApplicationContext());
+//        favoriteAdapter = new FavoriteAdapter(favorite_list, getApplicationContext());
+//        recyclerView.setAdapter(favoriteAdapter);
+
+        getFavorite();
+
+    }
+
+    private void getFavorite() {
+        List<FavoriteList> favoriteLists=MainActivity.database.favoriteDao().getFavoriteData();
+
+        favoriteAdapter = new FavoriteAdapter(favoriteLists, getApplicationContext());
         recyclerView.setAdapter(favoriteAdapter);
     }
 }
