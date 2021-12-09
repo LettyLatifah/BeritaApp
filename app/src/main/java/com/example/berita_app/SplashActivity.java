@@ -49,22 +49,6 @@ public class SplashActivity extends AppCompatActivity {
         },0,60);
 
 
-
-//        Thread thread = new Thread(){
-//            public void run(){
-//                try{
-//                    sleep(4000);
-//                }catch (InterruptedException e){
-//                    e.printStackTrace();
-//                } finally {
-//                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//                    finish();
-//                }
-//            }
-//
-//        };
-//        thread.start();
-
     }
 
 }

@@ -61,30 +61,26 @@ public class NotificationAlarm extends AppCompatActivity {
                             long triggerTime = SystemClock.elapsedRealtime()
                                     + repeatInterval;
 
-                            // If the Toggle is turned on, set the repeating alarm with
-                            // a 15 minute interval.
                             if (alarmManager != null) {
                                 alarmManager.setInexactRepeating
                                         (AlarmManager.ELAPSED_REALTIME_WAKEUP,
                                                 triggerTime, repeatInterval,
                                                 notifyPendingIntent);
                             }
-                            // Set the toast message for the "on" case.
+
                             toastMessage = getString(R.string.alarm_on_toast);
 
                         } else {
-                            // Cancel notification if the alarm is turned off.
                             mNotificationManager.cancelAll();
 
                             if (alarmManager != null) {
                                 alarmManager.cancel(notifyPendingIntent);
                             }
-                            // Set the toast message for the "off" case.
                             toastMessage = getString(R.string.alarm_off_toast);
 
                         }
 
-                        // Show a toast to say the alarm is turned on or off.
+
                         Toast.makeText(NotificationAlarm.this, toastMessage,
                                 Toast.LENGTH_SHORT).show();
                     }

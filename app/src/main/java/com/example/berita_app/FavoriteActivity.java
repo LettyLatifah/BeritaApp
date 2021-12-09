@@ -20,6 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 //import java.util.List;
 //
 public class FavoriteActivity extends AppCompatActivity {
+
+    //gagal diterapkan karena masih eror
+
 //
 //    private RecyclerView recyclerView;
 //    public static FavoriteDatabase database;
