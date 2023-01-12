@@ -1,7 +1,7 @@
 # BeritaApp
 
 <h1 align="center">News Zone </h1>
-<p><img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview1.jpg" width="100px"> <img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview2.jpg" width="100px"></p>
+<p align="center"><img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview1.jpg" width="150px"> <img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview2.jpg" width="150px"> <img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview3.jpg" width="150px"> <img src="https://github.com/LettyLatifah/BeritaApp/blob/master/app/preview4.jpg" width="150px"> </p>
 
 
 
