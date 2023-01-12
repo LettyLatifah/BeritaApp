@@ -5,7 +5,7 @@
 
 
 
-News app using open source API Newsapi.org. This project using java programming language to build the application. And this application is called News Zone, in this application we can read the latest news, we also can read news based on 6 categories. The 6 categories of news that we can read are science, sport, technology, business, health, and entertainment. 
+News app using open source API Newsapi.org. This project using java programming language to build the application. And this application is called News Zone, in this application we can read the latest news, we also can read news based on 6 categories. The 6 categories of news that we can read are science, sport, technology, business, health, and entertainment. This project is used for capstone project purpose on "Pemrograman Bergerak" course. 
 
 
 
